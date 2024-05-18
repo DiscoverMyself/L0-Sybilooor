@@ -104,7 +104,7 @@
         }
 
         function searchAddress() {
-            const query = document.getElementById('search-input').value.trim();
+            const query = document.getElementById('search-input').value.trim().toLowerCase();
             const result = document.getElementById('result');
             if (addresses.includes(query)) {
                 result.textContent = `Address ${query} found in the list.`;
