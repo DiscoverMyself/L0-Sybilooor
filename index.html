@@ -85,38 +85,38 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-    <script>
-        let addresses = [];
+  <!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        async function fetchData() {
-            try {
-                const response = await fetch('https://raw.githubusercontent.com/LayerZero-Labs/sybil-report/main/initialList.txt');
-                const text = await response.text();
-                addresses = text.split('\n').map(address => address.toLowerCase());
-            } catch (error) {
-                console.error('Error fetching the data:', error);
-            }
+<script>
+    let addresses = [];
+
+    async function fetchData() {
+        try {
+            const response = await fetch('https://raw.githubusercontent.com/LayerZero-Labs/sybil-report/main/initialList.txt');
+            const text = await response.text();
+            addresses = text.split('\n').map(address => address.toLowerCase());
+        } catch (error) {
+            console.error('Error fetching the data:', error);
         }
+    }
 
-        function searchAddress() {
-            const query = document.getElementById('search-input').value.trim().toLowerCase();
-            const result = document.getElementById('result');
-            if (addresses.includes(query)) {
-                result.textContent = `Address ${query} found in the list.`;
-                result.className = 'found';
-            } else {
-                result.textContent = `Address ${query} not found in the list.`;
-                result.className = 'not-found';
-            }
+    function searchAddress() {
+        const query = document.getElementById('search-input').value.trim().toLowerCase();
+        const result = document.getElementById('result');
+        if (addresses.includes(query)) {
+            result.textContent = `Address ${query} found in the list.`;
+            result.className = 'found';
+        } else {
+            result.textContent = `Address ${query} not found in the list.`;
+            result.className = 'not-found';
         }
+    }
 
-        // Fetch the data when the page loads
-        window.onload = fetchData;
-    </script>
+    // Fetch the data when the page loads
+    window.onload = fetchData;
+</script>
 </body>
 </html>
