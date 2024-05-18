@@ -97,7 +97,7 @@
             try {
                 const response = await fetch('https://raw.githubusercontent.com/LayerZero-Labs/sybil-report/main/initialList.txt');
                 const text = await response.text();
-                addresses = text.split('\n');
+                addresses = text.split('\n').map(address => address.toLowerCase());
             } catch (error) {
                 console.error('Error fetching the data:', error);
             }
